@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/categories")
-public class CategoryRestController {
+public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
 

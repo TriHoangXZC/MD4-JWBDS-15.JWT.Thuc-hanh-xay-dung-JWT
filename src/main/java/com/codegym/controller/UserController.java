@@ -24,7 +24,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-public class UserRestController {
+public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -48,7 +48,7 @@ public class UserRestController {
         String jwt = jwtService.generateTokenLogin(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         User currentUser = userService.findByUsername(user.getUsername());
-        return ResponseEntity.ok(new JwtResponse(jwt, currentUser.getId(), userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(currentUser.getId(), jwt, userDetails.getUsername(), userDetails.getAuthorities()));
     }
 
     @PostMapping("/register")
